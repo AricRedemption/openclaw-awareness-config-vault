@@ -1,52 +1,34 @@
-# OpenClaw Restore Skill (Full System + Awareness Memory)
+# OpenClaw Restore & Memory Recovery (Essentials)
 
-Official refs:
-- OpenClaw docs: https://docs.openclaw.ai/
-- Awareness docs: https://awareness.market/docs
+## Goal
+Restore OpenClaw runtime from backup and reconnect Awareness memory.
 
-## Restore sequence
-
-### 1) Restore OpenClaw files
-
-Restore the full backup archive (recommended):
+## 1) Restore files
 
 ```bash
 tar -xzf <BACKUP_FILE>.tar.gz -C /
 ```
 
-Then ensure these paths exist:
-- `~/.openclaw/openclaw.json`
-- `~/.openclaw/agents/`
-- `~/.openclaw/extensions/`
-- `~/.openclaw/skills/` and `~/.openclaw/workspace/skills/`
-
-### 2) Reinstall/verify Awareness plugin
+## 2) Reinstall plugin
 
 ```bash
 openclaw plugins install @awareness-sdk/openclaw-memory
 ```
 
-### 3) Set API key
+## 3) Set API key
 
 ```bash
 export AWARENESS_API_KEY="<YOUR_AWARENESS_API_KEY>"
 ```
 
-### 4) Recover memory
+## 4) Recover memory
 
 - Run `awareness_init`
-- List memories
-- User selects one existing historical `MEMORY_ID`
-- Verify in sequence on same `MEMORY_ID`:
+- Select one existing historical `MEMORY_ID`
+- Verify:
   - `awareness_lookup` / `awareness_recall`
   - `awareness_record`
   - `awareness_lookup` / `awareness_recall`
-
-## Fallback (plugin failure)
-
-Use MCP headers:
-- `Authorization: Bearer <AWARENESS_API_KEY>`
-- `X-Awareness-Memory-Id: <MEMORY_ID>`
 
 ## Rules
 

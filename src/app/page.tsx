@@ -9,8 +9,8 @@ export default function Home() {
   const [copyAllHint, setCopyAllHint] = useState("Copy Prompt & Key");
   const modeGuide =
     mode === "backup"
-      ? "Backup mode: save critical OpenClaw files."
-      : "Restore mode: recover memory and reconnect Awareness.";
+      ? "Backup mode: backup and store critical OpenClaw data."
+      : "Restore mode: restore files and recover Awareness memory.";
   const targetSkillUrl =
     mode === "backup"
       ? "https://openclaw-awareness-config-vault.vercel.app/skill/BACKUP.md"
@@ -73,7 +73,7 @@ export default function Home() {
               onClick={() => setMode("backup")}
               type="button"
             >
-              Backup
+              Backup & Store
             </button>
             <button
               className={`relative z-10 h-11 rounded-full text-sm font-semibold transition ${

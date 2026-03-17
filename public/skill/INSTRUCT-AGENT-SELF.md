@@ -1,4 +1,4 @@
-Choose one skill by intent:
+Choose one skill:
 
-- Backup files: https://openclaw-awareness-config-vault.vercel.app/skill/BACKUP.md
-- Restore memory: https://openclaw-awareness-config-vault.vercel.app/skill/RESTORE.md
+- Backup & Store: https://openclaw-awareness-config-vault.vercel.app/skill/BACKUP.md
+- Restore Memory: https://openclaw-awareness-config-vault.vercel.app/skill/RESTORE.md
