@@ -16,6 +16,11 @@ export const metadata: Metadata = {
   title: "Awareness Recovery for OpenClaw",
   description:
     "Recover OpenClaw memory quickly with Awareness API key and memory selection.",
+  icons: {
+    icon: "https://awareness.market/favicon.ico",
+    shortcut: "https://awareness.market/favicon.ico",
+    apple: "https://awareness.market/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
