@@ -23,12 +23,37 @@ body {
 @layer utilities {
   .hero-glow {
     box-shadow: 0 0 0 rgba(36, 194, 90, 0);
-    transition: box-shadow 240ms ease, transform 240ms ease;
+    transition: box-shadow 240ms ease, transform 240ms ease, filter 240ms ease;
   }
 
   .hero-glow:hover {
     box-shadow: 0 14px 34px rgba(24, 166, 75, 0.28);
     transform: translateY(-1px);
+    filter: saturate(1.05);
+  }
+
+  .cta-sweep {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-sweep::before {
+    content: "";
+    position: absolute;
+    inset: -20% auto -20% -35%;
+    width: 28%;
+    transform: skewX(-20deg) translateX(-180%);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.33),
+      rgba(255, 255, 255, 0)
+    );
+    transition: transform 460ms ease;
+  }
+
+  .cta-sweep:hover::before {
+    transform: skewX(-20deg) translateX(520%);
   }
 }
 
