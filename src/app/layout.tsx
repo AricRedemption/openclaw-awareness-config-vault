@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Awareness Recovery for OpenClaw",
-  description: "Recover OpenClaw memory quickly with Awareness API key and memory selection.",
+  description:
+    "Recover OpenClaw memory quickly with Awareness API key and memory selection.",
 };
 
 export default function RootLayout({
@@ -24,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
     </html>
