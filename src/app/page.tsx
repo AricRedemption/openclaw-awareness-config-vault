@@ -11,7 +11,7 @@ export default function Home() {
   );
   const [copyHint, setCopyHint] = useState("Copy");
   const [copyAllHint, setCopyAllHint] = useState("Copy Prompt & Key");
-  const skillFile = "/skills/awareness-recovery.md";
+  const skillFile = "/skill/instruct.md";
 
   useEffect(() => {
     let active = true;
