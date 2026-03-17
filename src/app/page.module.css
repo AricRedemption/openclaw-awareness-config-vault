@@ -1,141 +1,325 @@
 .page {
-  --background: #fafafa;
-  --foreground: #fff;
+  --safe-green-700: #0f8f3f;
+  --safe-green-600: #18a64b;
+  --safe-green-500: #24c25a;
+  --safe-green-300: #8de7ab;
+  --slate-900: #172028;
+  --slate-600: #5b6875;
+  --slate-400: #8d99a5;
+  --slate-200: #dce4e8;
+  --slate-100: #eef2f4;
+  --white: #ffffff;
 
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  display: flex;
   min-height: 100vh;
-  align-items: center;
+  display: flex;
   justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
+  padding: 64px 24px 80px;
+  background:
+    radial-gradient(circle at 16% -8%, #d9f9e3 0%, #f2f6f3 40%, #f1f3f2 100%),
+    linear-gradient(160deg, #f2f6f3 0%, #ebf0ee 100%);
+  color: var(--slate-900);
 }
 
 .main {
-  display: flex;
-  min-height: 100vh;
   width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
+  max-width: 920px;
 }
 
-.intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
+.hero {
+  text-align: center;
 }
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
+.kicker {
+  display: inline-flex;
+  margin-bottom: 14px;
+  border-radius: 999px;
+  border: 1px solid var(--safe-green-300);
+  background: #f3fcf6;
+  color: var(--safe-green-700);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+}
+
+.hero h1 {
+  margin: 0 auto;
+  max-width: 760px;
+  font-size: clamp(32px, 5.2vw, 58px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+.hero h1 span {
+  color: var(--safe-green-600);
+}
+
+.switcher {
+  margin: 30px auto 0;
+  width: min(420px, 100%);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  border: 1px solid var(--slate-200);
+  border-radius: 999px;
+  background: #f9fcfa;
+  padding: 6px;
+  box-shadow: inset 0 0 0 1px #ffffff;
+}
+
+.switcher button {
+  height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--slate-600);
+  font-size: 23px;
   font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
-}
-
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
-}
-
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.ctas {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
-}
-
-.ctas a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
   cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
+.switcher button:hover {
+  color: var(--slate-900);
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+.switcher button.activeMode {
+  background: linear-gradient(135deg, var(--safe-green-600), var(--safe-green-500));
+  color: var(--white);
+  box-shadow: 0 10px 20px rgba(24, 166, 75, 0.28);
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
+.card {
+  margin-top: 48px;
+  border-radius: 24px;
+  border: 1px solid #d9e3dd;
+  background: var(--white);
+  box-shadow: 0 24px 46px rgba(18, 36, 27, 0.1);
+  overflow: hidden;
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 26px 18px;
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
+.cardTitleWrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
+.codeBadge {
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  display: inline-grid;
+  place-items: center;
+  color: var(--safe-green-700);
+  background: #eaf9ef;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.cardHeader h2 {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.cardHeader a {
+  color: var(--safe-green-600);
+  font-weight: 600;
+}
+
+.connectionStrip {
+  margin: 0 26px;
+  border-radius: 16px;
+  border: 1px solid var(--slate-100);
+  background: #f8fbf8;
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.systemLabel {
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.connector {
+  width: 112px;
+  height: 2px;
+  position: relative;
+  background: linear-gradient(90deg, #9de5b7, #24c25a);
+}
+
+.connector::before,
+.connector::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--safe-green-500);
+  background: #f7fff9;
+  position: absolute;
+  top: -4px;
+}
+
+.connector::before {
+  left: -2px;
+}
+
+.connector::after {
+  right: -2px;
+}
+
+.awarenessWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.awarenessWrap strong {
+  font-size: 21px;
+  letter-spacing: -0.01em;
+}
+
+.status {
+  margin-left: 4px;
+  border-radius: 999px;
+  border: 1px solid #89dfab;
+  background: #ebfbf1;
+  color: var(--safe-green-700);
+  padding: 5px 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.guide {
+  margin-top: 24px;
+  border-top: 1px solid var(--slate-100);
+  padding: 28px 26px 30px;
+}
+
+.guide h3 {
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.guide p {
+  margin-top: 10px;
+  color: var(--slate-600);
+  line-height: 1.6;
+}
+
+.promptBox {
+  margin-top: 16px;
+  background: #f4f7f5;
+  border: 1px solid #dce5df;
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.promptBox code {
+  flex: 1;
+  white-space: normal;
+  color: #2f3a44;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.promptBox button {
+  border: 0;
+  border-radius: 10px;
+  background: #e9efe9;
+  color: #34513c;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primaryBtn {
+  margin-top: 16px;
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, var(--safe-green-600), var(--safe-green-500));
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 16px 28px rgba(24, 166, 75, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.primaryBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 32px rgba(24, 166, 75, 0.28);
+}
+
+@media (max-width: 800px) {
   .page {
-    --background: #000;
-    --foreground: #000;
+    padding: 38px 14px 44px;
+  }
 
-    --text-primary: #ededed;
-    --text-secondary: #999;
+  .switcher button {
+    font-size: 16px;
+  }
 
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
+  .card {
+    margin-top: 30px;
+    border-radius: 18px;
+  }
+
+  .cardHeader,
+  .guide {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .cardHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .cardHeader h2 {
+    font-size: 24px;
+  }
+
+  .connectionStrip {
+    margin: 0 16px;
+    flex-wrap: wrap;
+    row-gap: 12px;
+    justify-content: flex-start;
+  }
+
+  .connector {
+    width: 72px;
+  }
+
+  .guide h3 {
+    font-size: 22px;
+  }
+
+  .promptBox {
+    flex-direction: column;
+  }
+
+  .promptBox button {
+    align-self: flex-end;
   }
 }
