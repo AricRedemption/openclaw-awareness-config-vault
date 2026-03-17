@@ -11,14 +11,7 @@ export default function Home() {
   );
   const [copyHint, setCopyHint] = useState("Copy");
   const [copyAllHint, setCopyAllHint] = useState("Copy Prompt & Key");
-
-  const skillFile = useMemo(
-    () =>
-      mode === "human"
-        ? "/skills/human-recovery.md"
-        : "/skills/agent-recovery.md",
-    [mode]
-  );
+  const skillFile = "/skills/awareness-recovery.md";
 
   useEffect(() => {
     let active = true;
@@ -154,14 +147,10 @@ export default function Home() {
 
           <div className="mt-6 border-t border-slate-100 px-4 pb-6 pt-6 sm:px-6 sm:pb-7">
             <h3 className="text-2xl font-bold tracking-tight sm:text-[1.7rem]">
-              {mode === "human"
-                ? "Human Recovery Guide"
-                : "Agent Recovery Guide"}
+              Awareness Recovery Guide
             </h3>
             <p className="mt-2.5 max-w-3xl text-sm leading-6 text-slate-600 sm:text-base">
-              {mode === "human"
-                ? "面向人工操作：按步骤引导恢复并解释每一步结果。"
-                : "面向代理执行：严格按恢复协议执行并返回结构化状态。"}
+              统一使用同一个恢复 skill。复制后可直接交给人类操作或 Agent 执行。
             </p>
 
             <div className="mt-4 flex flex-col gap-3 rounded-xl border border-slate-200 bg-slate-100 p-4 sm:flex-row sm:items-start sm:gap-4">
