@@ -57,6 +57,14 @@ body {
   }
 }
 
+@media (hover: none) {
+  .hero-glow:hover {
+    box-shadow: 0 0 0 rgba(36, 194, 90, 0);
+    transform: none;
+    filter: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

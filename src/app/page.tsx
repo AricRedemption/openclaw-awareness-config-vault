@@ -69,21 +69,21 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_16%_-8%,#d9f9e3_0%,#f2f6f3_40%,#f1f3f2_100%)] px-4 py-10 text-slate-900 sm:px-6 sm:py-14">
-      <div className="pointer-events-none absolute -left-12 top-8 h-56 w-56 rounded-full bg-safe-300/40 blur-3xl motion-safe:animate-aurora-x" />
-      <div className="pointer-events-none absolute -right-12 top-24 h-64 w-64 rounded-full bg-safe-500/25 blur-3xl motion-safe:animate-float-soft" />
-      <div className="pointer-events-none absolute bottom-8 left-1/3 h-40 w-40 rounded-full bg-emerald-200/35 blur-3xl motion-safe:animate-float-soft [animation-delay:700ms]" />
+      <div className="pointer-events-none absolute -left-12 top-8 hidden h-56 w-56 rounded-full bg-safe-300/40 blur-3xl md:block motion-safe:md:animate-aurora-x" />
+      <div className="pointer-events-none absolute -right-12 top-24 hidden h-64 w-64 rounded-full bg-safe-500/25 blur-3xl md:block motion-safe:md:animate-float-soft" />
+      <div className="pointer-events-none absolute bottom-8 left-1/3 hidden h-40 w-40 rounded-full bg-emerald-200/35 blur-3xl md:block motion-safe:md:animate-float-soft [animation-delay:700ms]" />
       <main className="mx-auto w-full max-w-[920px]">
         <section className="relative z-10 text-center">
-          <p className="mb-4 inline-flex rounded-full border border-safe-300 bg-green-50 px-3 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-safe-700 motion-safe:animate-fade-up sm:text-xs">
+          <p className="mb-4 inline-flex rounded-full border border-safe-300 bg-green-50 px-3 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-safe-700 motion-safe:md:animate-fade-up sm:text-xs">
             Awareness Memory Recovery
           </p>
-          <h1 className="mx-auto max-w-[760px] text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] motion-safe:animate-fade-up [animation-delay:120ms] sm:text-5xl md:text-6xl">
+          <h1 className="mx-auto max-w-[760px] text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] motion-safe:md:animate-fade-up [animation-delay:120ms] sm:text-5xl md:text-6xl">
             Restore OpenClaw Memory with
             <span className="text-safe-600"> One API Key + Memory Select</span>
           </h1>
 
           <div
-            className="relative mx-auto mt-8 grid w-full max-w-[420px] grid-cols-2 gap-1.5 rounded-full border border-slate-200 bg-slate-50 p-1.5 motion-safe:animate-fade-up [animation-delay:220ms]"
+            className="relative mx-auto mt-8 grid w-full max-w-[420px] grid-cols-2 gap-1.5 rounded-full border border-slate-200 bg-slate-50 p-1.5 motion-safe:md:animate-fade-up [animation-delay:220ms]"
             role="tablist"
             aria-label="User mode"
           >
@@ -120,7 +120,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative z-10 mt-10 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_20px_45px_rgba(18,36,27,0.1)] transition-transform duration-300 hover:-translate-y-0.5 motion-safe:animate-card-in sm:mt-12">
+        <section className="relative z-10 mt-10 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_20px_45px_rgba(18,36,27,0.1)] transition-transform duration-300 md:hover:-translate-y-0.5 motion-safe:md:animate-card-in sm:mt-12">
           <header className="flex flex-col gap-4 px-4 pb-4 pt-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
             <div className="flex items-center gap-3">
               <span className="grid h-9 w-9 place-items-center rounded-xl bg-green-50 text-sm font-extrabold text-safe-700">
@@ -148,10 +148,10 @@ export default function Home() {
               height={32}
               className="h-7 w-auto object-contain sm:h-8"
             />
-            <span className="motion-safe:animate-pulse-link relative h-[2px] w-20 overflow-hidden bg-gradient-to-r from-green-300 to-safe-500 sm:w-28">
+            <span className="relative h-[2px] w-20 overflow-hidden bg-gradient-to-r from-green-300 to-safe-500 md:motion-safe:animate-pulse-link sm:w-28">
               <span className="absolute -left-1 -top-[3px] h-2 w-2 rounded-full border border-safe-500 bg-green-50" />
               <span className="absolute -right-1 -top-[3px] h-2 w-2 rounded-full border border-safe-500 bg-green-50" />
-              <span className="absolute top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-safe-500 shadow-[0_0_10px_rgba(36,194,90,0.8)] motion-safe:animate-link-dot" />
+              <span className="absolute top-1/2 hidden h-2 w-2 -translate-y-1/2 rounded-full bg-safe-500 shadow-[0_0_10px_rgba(36,194,90,0.8)] md:block md:motion-safe:animate-link-dot" />
             </span>
             <div className="flex items-center gap-2.5">
               <Image
