@@ -12,6 +12,10 @@ export default function Home() {
   const [copyHint, setCopyHint] = useState("Copy");
   const [copyAllHint, setCopyAllHint] = useState("Copy Prompt & Key");
   const skillFile = "/skill/instruct.md";
+  const modeGuide =
+    mode === "human"
+      ? "For human: copy this prompt and run step-by-step recovery."
+      : "For agent: copy this prompt for auto-recovery execution.";
 
   useEffect(() => {
     let active = true;
@@ -43,10 +47,10 @@ export default function Home() {
 
   const fullCopyText = useMemo(() => {
     if (skillText) {
-      return `${skillText}\n\nAWARENESS_API_KEY=<your-api-key>`;
+      return `${modeGuide}\n\n${skillText}\n\nAWARENESS_API_KEY=<your-api-key>`;
     }
     return "AWARENESS_API_KEY=<your-api-key>";
-  }, [skillText]);
+  }, [modeGuide, skillText]);
 
   const copyText = async (
     text: string,
@@ -165,17 +169,17 @@ export default function Home() {
 
           <div className="mt-6 border-t border-slate-100 px-4 pb-6 pt-6 sm:px-6 sm:pb-7">
             <h3 className="text-2xl font-bold tracking-tight sm:text-[1.7rem]">
-              Awareness Recovery Guide
+              Awareness Skill Integration Guide
             </h3>
             <p className="mt-2.5 max-w-3xl text-sm leading-6 text-slate-600 sm:text-base">
-              Copy the prompt below and send it to your AI agent.
+              {modeGuide}
             </p>
 
             <div className="mt-4 flex flex-col gap-3 rounded-xl border border-slate-200 bg-slate-100 p-4 sm:flex-row sm:items-start sm:gap-4">
               <code className="flex-1 whitespace-pre-wrap text-sm leading-6 text-slate-700">
                 {skillStatus === "loading" && "Loading selected skill file..."}
                 {skillStatus === "error" &&
-                  "Skill file load failed. Please check /public/skills path."}
+                  "Skill file load failed. Please check /skill/instruct.md path."}
                 {skillStatus === "ready" && skillText}
               </code>
               <button
