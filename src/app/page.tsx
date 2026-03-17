@@ -1,56 +1,23 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 export default function Home() {
   const [mode, setMode] = useState<"human" | "agent">("human");
-  const [skillText, setSkillText] = useState("");
-  const [skillStatus, setSkillStatus] = useState<"loading" | "ready" | "error">(
-    "loading"
-  );
   const [copyHint, setCopyHint] = useState("Copy");
   const [copyAllHint, setCopyAllHint] = useState("Copy Prompt & Key");
-  const skillFile = "/skill/instruct.md";
+  const skillFileUrl =
+    "https://openclaw-awareness-config-vault.vercel.app/skill/instruct.md";
   const modeGuide =
     mode === "human"
       ? "For human: copy this prompt and run step-by-step recovery."
       : "For agent: copy this prompt for auto-recovery execution.";
-
-  useEffect(() => {
-    let active = true;
-    setSkillStatus("loading");
-
-    const loadSkillFile = async () => {
-      try {
-        const response = await fetch(skillFile, { cache: "no-store" });
-        if (!response.ok) {
-          throw new Error("Failed to load skill file");
-        }
-        const content = await response.text();
-        if (!active) return;
-        setSkillText(content.trim());
-        setSkillStatus("ready");
-      } catch {
-        if (!active) return;
-        setSkillText("");
-        setSkillStatus("error");
-      }
-    };
-
-    loadSkillFile();
-
-    return () => {
-      active = false;
-    };
-  }, [skillFile]);
+  const promptText = `Read skill: ${skillFileUrl}`;
 
   const fullCopyText = useMemo(() => {
-    if (skillText) {
-      return `${modeGuide}\n\n${skillText}\n\nAWARENESS_API_KEY=<your-api-key>`;
-    }
-    return "AWARENESS_API_KEY=<your-api-key>";
-  }, [modeGuide, skillText]);
+    return `${modeGuide}\n\n${promptText}\n\nAWARENESS_API_KEY=<your-api-key>`;
+  }, [modeGuide, promptText]);
 
   const copyText = async (
     text: string,
@@ -207,20 +174,11 @@ export default function Home() {
 
             <div className="mt-4 flex flex-col gap-3 rounded-xl border border-slate-200 bg-slate-100 p-4 sm:flex-row sm:items-start sm:gap-4">
               <code className="flex-1 whitespace-pre-wrap text-sm leading-6 text-slate-700">
-                {skillStatus === "loading" && "Loading selected skill file..."}
-                {skillStatus === "error" &&
-                  "Skill file load failed. Please check /skill/instruct.md path."}
-                {skillStatus === "ready" && skillText}
+                {promptText}
               </code>
               <button
                 className="w-fit rounded-lg bg-slate-200 px-3 py-2 text-xs font-bold text-slate-700 transition hover:bg-slate-300"
-                onClick={() =>
-                  copyText(
-                    skillText || "Skill file load failed.",
-                    setCopyHint,
-                    "Copy"
-                  )
-                }
+                onClick={() => copyText(promptText, setCopyHint, "Copy")}
                 type="button"
               >
                 {copyHint}
