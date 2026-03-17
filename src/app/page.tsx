@@ -11,7 +11,7 @@ export default function Home() {
   );
   const [copyHint, setCopyHint] = useState("Copy");
   const [copyAllHint, setCopyAllHint] = useState("Copy Prompt & Key");
-  const skillFile = "/skill/INSTRUCT-AGENT-SELF.md";
+  const skillFile = "/skill/instruct.md";
   const modeGuide =
     mode === "human"
       ? "For human: copy this prompt and run step-by-step recovery."
