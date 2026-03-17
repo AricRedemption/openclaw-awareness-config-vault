@@ -110,59 +110,28 @@ export default function Home() {
           </header>
 
           <div className="mx-4 rounded-2xl border border-slate-100 bg-slate-50 p-4 sm:mx-6 sm:p-5">
-            <div className="flex items-center justify-center gap-3 sm:hidden">
+            <div className="flex items-center justify-center gap-2.5 sm:gap-4">
               <Image
                 src="/openclaw-logo.svg"
                 alt="OpenClaw logo"
                 width={154}
                 height={32}
-                className="h-7 w-auto object-contain"
+                className="h-7 w-auto object-contain sm:h-8"
               />
-            </div>
-            <div className="mx-auto my-2.5 h-8 w-4 sm:hidden">
-              <span className="relative mx-auto block h-full w-[2px] overflow-hidden rounded-full bg-gradient-to-b from-green-300 to-safe-500">
-                <span className="absolute -left-[3px] -top-[1px] h-2 w-2 rounded-full border border-safe-500 bg-green-50" />
-                <span className="absolute -left-[3px] -bottom-[1px] h-2 w-2 rounded-full border border-safe-500 bg-green-50" />
-                <span className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-safe-500 shadow-[0_0_10px_rgba(36,194,90,0.8)] motion-safe:animate-pulse-link" />
+              <span className="relative h-[2px] w-16 overflow-hidden bg-gradient-to-r from-green-300 to-safe-500 motion-safe:animate-pulse-link sm:w-28">
+                <span className="absolute -left-1 -top-[3px] h-2 w-2 rounded-full border border-safe-500 bg-green-50" />
+                <span className="absolute -right-1 -top-[3px] h-2 w-2 rounded-full border border-safe-500 bg-green-50" />
+                <span className="absolute top-1/2 hidden h-2 w-2 -translate-y-1/2 rounded-full bg-safe-500 shadow-[0_0_10px_rgba(36,194,90,0.8)] sm:block motion-safe:sm:animate-link-dot" />
               </span>
-            </div>
-            <div className="flex items-center justify-center gap-2.5 sm:hidden">
-              <Image
-                src="/awareness-logo.svg"
-                alt="Awareness logo"
-                width={22}
-                height={22}
-              />
-              <strong className="text-lg tracking-tight">Awareness</strong>
-              <span className="rounded-full border border-green-300 bg-green-50 px-2.5 py-1 text-xs font-bold text-safe-700">
-                Connected
-              </span>
-            </div>
-            <div className="hidden items-center justify-center gap-4 sm:flex">
-            <Image
-              src="/openclaw-logo.svg"
-              alt="OpenClaw logo"
-              width={154}
-              height={32}
-              className="h-7 w-auto object-contain sm:h-8"
-            />
-            <span className="relative h-[2px] w-20 overflow-hidden bg-gradient-to-r from-green-300 to-safe-500 md:motion-safe:animate-pulse-link sm:w-28">
-              <span className="absolute -left-1 -top-[3px] h-2 w-2 rounded-full border border-safe-500 bg-green-50" />
-              <span className="absolute -right-1 -top-[3px] h-2 w-2 rounded-full border border-safe-500 bg-green-50" />
-              <span className="absolute top-1/2 hidden h-2 w-2 -translate-y-1/2 rounded-full bg-safe-500 shadow-[0_0_10px_rgba(36,194,90,0.8)] md:block md:motion-safe:animate-link-dot" />
-            </span>
-            <div className="flex items-center gap-2.5">
-              <Image
-                src="/awareness-logo.svg"
-                alt="Awareness logo"
-                width={22}
-                height={22}
-              />
-              <strong className="text-lg tracking-tight">Awareness</strong>
-            </div>
-            <span className="rounded-full border border-green-300 bg-green-50 px-2.5 py-1 text-xs font-bold text-safe-700">
-              Connected
-            </span>
+              <div className="flex items-center gap-2.5">
+                <Image
+                  src="/awareness-logo.svg"
+                  alt="Awareness logo"
+                  width={22}
+                  height={22}
+                />
+                <strong className="text-lg tracking-tight">Awareness</strong>
+              </div>
             </div>
           </div>
 
