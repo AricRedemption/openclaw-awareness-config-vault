@@ -168,7 +168,7 @@ export default function Home() {
               Awareness Recovery Guide
             </h3>
             <p className="mt-2.5 max-w-3xl text-sm leading-6 text-slate-600 sm:text-base">
-              统一使用同一个恢复 skill。复制后可直接交给人类操作或 Agent 执行。
+              Copy the prompt below and send it to your AI agent.
             </p>
 
             <div className="mt-4 flex flex-col gap-3 rounded-xl border border-slate-200 bg-slate-100 p-4 sm:flex-row sm:items-start sm:gap-4">
