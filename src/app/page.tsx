@@ -1,19 +1,59 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
-
-const PROMPT_TEMPLATE =
-  "Install Awareness OpenClaw memory integration, connect with AWARENESS_API_KEY=<your-api-key>, then list my memories and let me select one MEMORY_ID to restore history.";
+import { useEffect, useMemo, useState } from "react";
 
 export default function Home() {
   const [mode, setMode] = useState<"human" | "agent">("human");
+  const [skillText, setSkillText] = useState("");
+  const [skillStatus, setSkillStatus] = useState<"loading" | "ready" | "error">(
+    "loading"
+  );
   const [copyHint, setCopyHint] = useState("Copy");
   const [copyAllHint, setCopyAllHint] = useState("Copy Prompt & Key");
 
+  const skillFile = useMemo(
+    () =>
+      mode === "human"
+        ? "/skills/human-recovery.md"
+        : "/skills/agent-recovery.md",
+    [mode]
+  );
+
+  useEffect(() => {
+    let active = true;
+    setSkillStatus("loading");
+
+    const loadSkillFile = async () => {
+      try {
+        const response = await fetch(skillFile, { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error("Failed to load skill file");
+        }
+        const content = await response.text();
+        if (!active) return;
+        setSkillText(content.trim());
+        setSkillStatus("ready");
+      } catch {
+        if (!active) return;
+        setSkillText("");
+        setSkillStatus("error");
+      }
+    };
+
+    loadSkillFile();
+
+    return () => {
+      active = false;
+    };
+  }, [skillFile]);
+
   const fullCopyText = useMemo(() => {
-    return `${PROMPT_TEMPLATE}\n\nAWARENESS_API_KEY=<your-api-key>`;
-  }, []);
+    if (skillText) {
+      return `${skillText}\n\nAWARENESS_API_KEY=<your-api-key>`;
+    }
+    return "AWARENESS_API_KEY=<your-api-key>";
+  }, [skillText]);
 
   const copyText = async (
     text: string,
@@ -114,21 +154,32 @@ export default function Home() {
 
           <div className="mt-6 border-t border-slate-100 px-4 pb-6 pt-6 sm:px-6 sm:pb-7">
             <h3 className="text-2xl font-bold tracking-tight sm:text-[1.7rem]">
-              Awareness Recovery Guide
+              {mode === "human"
+                ? "Human Recovery Guide"
+                : "Agent Recovery Guide"}
             </h3>
             <p className="mt-2.5 max-w-3xl text-sm leading-6 text-slate-600 sm:text-base">
-              Copy the prompt below and send it to your OpenClaw agent. It will
-              connect Awareness, ask you to choose an existing memory, and
-              recover prior session context.
+              {mode === "human"
+                ? "面向人工操作：按步骤引导恢复并解释每一步结果。"
+                : "面向代理执行：严格按恢复协议执行并返回结构化状态。"}
             </p>
 
             <div className="mt-4 flex flex-col gap-3 rounded-xl border border-slate-200 bg-slate-100 p-4 sm:flex-row sm:items-start sm:gap-4">
               <code className="flex-1 whitespace-pre-wrap text-sm leading-6 text-slate-700">
-                {PROMPT_TEMPLATE}
+                {skillStatus === "loading" && "Loading selected skill file..."}
+                {skillStatus === "error" &&
+                  "Skill file load failed. Please check /public/skills path."}
+                {skillStatus === "ready" && skillText}
               </code>
               <button
                 className="w-fit rounded-lg bg-slate-200 px-3 py-2 text-xs font-bold text-slate-700 transition hover:bg-slate-300"
-                onClick={() => copyText(PROMPT_TEMPLATE, setCopyHint, "Copy")}
+                onClick={() =>
+                  copyText(
+                    skillText || "Skill file load failed.",
+                    setCopyHint,
+                    "Copy"
+                  )
+                }
                 type="button"
               >
                 {copyHint}
