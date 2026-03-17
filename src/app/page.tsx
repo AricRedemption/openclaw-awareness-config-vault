@@ -126,7 +126,13 @@ export default function Home() {
           </header>
 
           <div className="mx-4 flex flex-wrap items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-4 sm:mx-6 sm:justify-center sm:gap-4 sm:p-5">
-            <div className="text-sm font-extrabold tracking-[0.06em]">OPENCLAW</div>
+            <Image
+              src="/openclaw-logo.svg"
+              alt="OpenClaw logo"
+              width={154}
+              height={32}
+              className="h-7 w-auto object-contain sm:h-8"
+            />
             <span className="motion-safe:animate-pulse-link relative h-[2px] w-20 bg-gradient-to-r from-green-300 to-safe-500 sm:w-28">
               <span className="absolute -left-1 -top-[3px] h-2 w-2 rounded-full border border-safe-500 bg-green-50" />
               <span className="absolute -right-1 -top-[3px] h-2 w-2 rounded-full border border-safe-500 bg-green-50" />
