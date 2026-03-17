@@ -140,7 +140,36 @@ export default function Home() {
             </a>
           </header>
 
-          <div className="mx-4 flex flex-wrap items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-4 sm:mx-6 sm:justify-center sm:gap-4 sm:p-5">
+          <div className="mx-4 rounded-2xl border border-slate-100 bg-slate-50 p-4 sm:mx-6 sm:p-5">
+            <div className="flex items-center justify-center gap-3 sm:hidden">
+              <Image
+                src="/openclaw-logo.svg"
+                alt="OpenClaw logo"
+                width={154}
+                height={32}
+                className="h-7 w-auto object-contain"
+              />
+            </div>
+            <div className="mx-auto my-2.5 h-8 w-4 sm:hidden">
+              <span className="relative mx-auto block h-full w-[2px] overflow-hidden rounded-full bg-gradient-to-b from-green-300 to-safe-500">
+                <span className="absolute -left-[3px] -top-[1px] h-2 w-2 rounded-full border border-safe-500 bg-green-50" />
+                <span className="absolute -left-[3px] -bottom-[1px] h-2 w-2 rounded-full border border-safe-500 bg-green-50" />
+                <span className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-safe-500 shadow-[0_0_10px_rgba(36,194,90,0.8)] motion-safe:animate-pulse-link" />
+              </span>
+            </div>
+            <div className="flex items-center justify-center gap-2.5 sm:hidden">
+              <Image
+                src="/awareness-logo.svg"
+                alt="Awareness logo"
+                width={22}
+                height={22}
+              />
+              <strong className="text-lg tracking-tight">Awareness</strong>
+              <span className="rounded-full border border-green-300 bg-green-50 px-2.5 py-1 text-xs font-bold text-safe-700">
+                Connected
+              </span>
+            </div>
+            <div className="hidden items-center justify-center gap-4 sm:flex">
             <Image
               src="/openclaw-logo.svg"
               alt="OpenClaw logo"
@@ -165,6 +194,7 @@ export default function Home() {
             <span className="rounded-full border border-green-300 bg-green-50 px-2.5 py-1 text-xs font-bold text-safe-700">
               Connected
             </span>
+            </div>
           </div>
 
           <div className="mt-6 border-t border-slate-100 px-4 pb-6 pt-6 sm:px-6 sm:pb-7">
