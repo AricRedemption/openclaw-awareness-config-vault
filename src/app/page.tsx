@@ -4,16 +4,18 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 
 export default function Home() {
-  const [mode, setMode] = useState<"human" | "agent">("human");
+  const [mode, setMode] = useState<"backup" | "restore">("backup");
   const [copyHint, setCopyHint] = useState("Copy");
   const [copyAllHint, setCopyAllHint] = useState("Copy Prompt & Key");
-  const skillFileUrl =
-    "https://openclaw-awareness-config-vault.vercel.app/skill/instruct.md";
   const modeGuide =
-    mode === "human"
-      ? "For human: copy this prompt and run step-by-step recovery."
-      : "For agent: copy this prompt for auto-recovery execution.";
-  const promptText = `Read skill: ${skillFileUrl}`;
+    mode === "backup"
+      ? "Backup mode: save critical OpenClaw files."
+      : "Restore mode: recover memory and reconnect Awareness.";
+  const targetSkillUrl =
+    mode === "backup"
+      ? "https://openclaw-awareness-config-vault.vercel.app/skill/BACKUP.md"
+      : "https://openclaw-awareness-config-vault.vercel.app/skill/RESTORE.md";
+  const promptText = `Read skill: ${targetSkillUrl}`;
 
   const fullCopyText = useMemo(() => {
     return `${modeGuide}\n\n${promptText}\n\nAWARENESS_API_KEY=<your-api-key>`;
@@ -57,32 +59,32 @@ export default function Home() {
             <span
               aria-hidden="true"
               className={`pointer-events-none absolute left-1.5 top-1.5 h-11 w-[calc(50%-0.375rem)] rounded-full bg-gradient-to-r from-safe-600 to-safe-500 shadow-[0_10px_20px_rgba(24,166,75,0.28)] transition-transform duration-300 ${
-                mode === "agent"
+                mode === "restore"
                   ? "translate-x-[calc(100%+0.375rem)]"
                   : "translate-x-0"
               }`}
             />
             <button
               className={`relative z-10 h-11 rounded-full text-sm font-semibold transition ${
-                mode === "human"
+                mode === "backup"
                   ? "text-white"
                   : "text-slate-600 hover:text-slate-900"
               }`}
-              onClick={() => setMode("human")}
+              onClick={() => setMode("backup")}
               type="button"
             >
-              I&#39;m Human
+              Backup
             </button>
             <button
               className={`relative z-10 h-11 rounded-full text-sm font-semibold transition ${
-                mode === "agent"
+                mode === "restore"
                   ? "text-white"
                   : "text-slate-600 hover:text-slate-900"
               }`}
-              onClick={() => setMode("agent")}
+              onClick={() => setMode("restore")}
               type="button"
             >
-              I&#39;m Agent
+              Restore
             </button>
           </div>
         </section>
